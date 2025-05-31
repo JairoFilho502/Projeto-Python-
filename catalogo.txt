@@ -1,0 +1,6 @@
+Toyota Hilux;327,900
+Honda Civic;73,000
+BYD Dolphin;119,800
+Porsche Panamera;280,000
+Fiat Uno;50,000
+Honda;30,000
