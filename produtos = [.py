@@ -1,13 +1,13 @@
 produtos = [
-    ('Fiat Mobi 2024', 65000),
+    ('BYD Dolphin 2024', 165000),
     ('Hyundai HB20 2023', 85000),
-    ('Jeep Renegade 2024', 160000),
-    ('Vw T-Cross 2024', 160000),
+    ('Jeep Compass 2024', 160000),
+    ('Vw Amarok 2021', 180000),
     ('Toyota Corolla 2021', 130000),
     ('Honda Civic 2024', 200000),
     ('Ford Ranger 2024', 250000),
     ('Chevrolet S10 2024', 270000),
-    ('BMW X1 2024', 350000),
+    ('BMW 320i 2024', 350000),
     ('Mercedes-Benz C180 2024', 300000),
     ('Cavalo Alazão Documentado', 6000)
 ]
