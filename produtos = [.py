@@ -41,13 +41,13 @@ def adicionar_ao_carrinho():
             carrinho.append(produtos[escolha])
             print(f'\n{produtos[escolha][0]} foi adicionado ao carrinho!')
         else:
-            print('\n Número inválido. Tente novamente.')
+            print('\nNúmero inválido. Tente novamente.')
     except ValueError:
-        print('\n Entrada inválida. Digite apenas números.')
+        print('\nEntrada inválida. Digite apenas números.')
 
 def remover_do_carrinho():
     if not carrinho:
-        print('\n Seu carrinho está vazio.')
+        print('\nSeu carrinho está vazio.')
         return
     exibir_produtos(carrinho, 'VEÍCULOS NO CARRINHO')
     try:
@@ -56,9 +56,9 @@ def remover_do_carrinho():
             removido = carrinho.pop(escolha)
             print(f'\n{removido[0]} foi removido do carrinho.')
         else:
-            print('\n Número inválido.')
+            print('\nNúmero inválido.')
     except ValueError:
-        print('\n Entrada inválida. Digite apenas números.')
+        print('\nEntrada inválida. Digite apenas números.')
 
 def ver_total(aplicar_cupom=False):
     subtotal = sum(preco for _, preco in carrinho)
@@ -95,7 +95,7 @@ def menu():
         print('5. Finalizar compra')
         print('6. Remover veículo do carrinho')
 
-        opcao = input('\n Escolha uma opção: ')
+        opcao = input('\nEscolha uma opção: ')
         
         if opcao == '1':
             exibir_produtos(produtos, 'Estoque disponível')
@@ -107,27 +107,27 @@ def menu():
             if carrinho:
                 exibir_produtos(carrinho, 'Veículos no Carrinho')
             else:
-                print('\n Seu carrinho está vazio.')
+                print('\nSeu carrinho está vazio.')
 
         elif opcao == '4':
             if carrinho:
                 ver_total()
             else:
-                print('\n Seu carrinho está vazio.')
+                print('\nSeu carrinho está vazio.')
 
         elif opcao == '5':
             if not carrinho:
-                print('\n Seu carrinho está vazio. Adicione veículos antes de finalizar.')
+                print('\nSeu carrinho está vazio. Adicione veículos antes de finalizar.')
                 continue
                 
-            usar_cupom = input('\n Possui cupom de desconto? Digite "DESCONTO10" para 10% (ou Enter para ignorar): ')
+            usar_cupom = input('\nPossui cupom de desconto? Digite "DESCONTO10" para 10% (ou Enter para ignorar): ')
 
             aplicar_cupom = usar_cupom.strip().upper() == 'DESCONTO10'
             
             print('\n' + '=' * 50)
             print('Resumo da Compra')
             ver_total(aplicar_cupom)
-            print('\n Compra finalizada com sucesso!')
+            print('\nCompra finalizada com sucesso!')
             print('Obrigado por escolher nossa loja!')
             print('=' * 50)
             break
