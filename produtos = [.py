@@ -2,34 +2,37 @@ DESCONTO_CUPOM = 0.10
 MAX_PRODUTOS = 3
 ARQUIVO_HISTORICO = 'historico_compras.txt'
 
-print("Bem-vindo ao E-commerce BarbaCar!")
+print("\nBem-vindo ao E-commerce BarbaCar!\n" + "-" * 40)
 
 produtos = []
 carrinho = []
 
 def carregar_produtos():
-    try:
-        with open('lista de produtos.txt', 'r', encoding='utf-8') as f:
-            lista = []
-            for linha in f:
-                pos = linha.find(';')
-                if pos != -1:
-                    nome = linha[:pos].strip()
-                    preco = linha[pos+1:].strip()
-                    lista.append([nome, preco])
-            return lista
-    except FileNotFoundError:
-        print("Arquivo 'lista de produtos.txt' não encontrado.")
-        return []
+    lista = []
+    arquivo = open('lista de produtos.txt', 'r', encoding='utf-8')
+    linhas = arquivo.readlines()
+    arquivo.close()
+    i = 0
+    while i < len(linhas):
+        linha = linhas[i]
+        pos = linha.find(';')
+        if pos != -1:
+            nome = linha[:pos].strip()
+            preco = linha[pos+1:].strip()
+            lista.append([nome, preco])
+        i += 1
+    return lista
 
 def exibir_lista(lista, titulo):
-    print(f"\n{titulo}\n" + "-" * 40)
-    if not lista:
+    print("\n" + titulo + "\n" + "-" * 40)
+    if len(lista) == 0:
         print("Nenhum item disponível.")
-    for i in range(len(lista)):
+    i = 0
+    while i < len(lista):
         nome = lista[i][0]
         preco = int(lista[i][1])
-        print(f"{i} - {nome} - R$ {preco}")
+        print(str(i) + " - " + nome + " - R$ " + str(preco))
+        i += 1
     print("-" * 40)
 
 def adicionar_ao_carrinho():
@@ -37,50 +40,59 @@ def adicionar_ao_carrinho():
         print("Carrinho cheio.")
         return
     exibir_lista(produtos, "Veículos Disponíveis")
-    try:
-        i = int(input("Escolha o número do veículo: "))
-        carrinho.append(produtos[i])
-        print("Veículo adicionado.")
-    except:
+    entrada = input("Escolha o número do veículo: ")
+    if entrada.isdigit():
+        i = int(entrada)
+        if 0 <= i < len(produtos):
+            carrinho.append(produtos[i])
+            print("Veículo adicionado.")
+        else:
+            print("Número inválido.")
+    else:
         print("Escolha inválida.")
 
 def remover_do_carrinho():
     exibir_lista(carrinho, "Carrinho")
-    try:
-        i = int(input("Número para remover: "))
-        nova_lista = []
-        for j in range(len(carrinho)):
-            if j != i:
-                nova_lista.append(carrinho[j])
-        if len(nova_lista) == len(carrinho):
-            print("Número inválido.")
-        else:
-            print(f"{carrinho[i][0]} removido.")
+    entrada = input("Número para remover: ")
+    if entrada.isdigit():
+        i = int(entrada)
+        if 0 <= i < len(carrinho):
+            nome = carrinho[i][0]
+            nova_lista = []
+            j = 0
+            while j < len(carrinho):
+                if j != i:
+                    nova_lista.append(carrinho[j])
+                j += 1
             carrinho.clear()
             carrinho.extend(nova_lista)
-    except:
-        print("Remoção inválida.")
+            print(nome + " removido.")
+        else:
+            print("Número inválido.")
+    else:
+        print("Opção inválida.")
 
 def calcular_total(usou_cupom):
     total = 0
-    for item in carrinho:
-        total += int(item[1])
+    i = 0
+    while i < len(carrinho):
+        total += int(carrinho[i][1])
+        i += 1
     desconto = total * DESCONTO_CUPOM if usou_cupom else 0
     final = total - desconto
     return total, desconto, final
 
 def salvar_compra(total):
-    try:
-        with open(ARQUIVO_HISTORICO, 'a', encoding='utf-8') as f:
-            print("COMPRA:", file=f)
-            for item in carrinho:
-                nome = item[0]
-                preco = int(item[1])
-                print("- " + nome + ": R$ " + str(preco), file=f)
-            print("TOTAL: R$ " + str(int(total)), file=f)
-            print("", file=f)
-    except:
-        print("Erro ao salvar compra.")
+    arquivo = open(ARQUIVO_HISTORICO, 'a', encoding='utf-8')
+    arquivo.write("COMPRA:\n")
+    i = 0
+    while i < len(carrinho):
+        nome = carrinho[i][0]
+        preco = int(carrinho[i][1])
+        arquivo.write("- " + nome + ": R$ " + str(preco) + "\n")
+        i += 1
+    arquivo.write("TOTAL: R$ " + str(int(total)) + "\n\n")
+    arquivo.close()
 
 def menu():
     global produtos
@@ -88,7 +100,7 @@ def menu():
 
     while True:
         print("\n1. Ver estoque\n2. Adicionar ao carrinho\n3. Ver carrinho\n4. Total\n5. Finalizar compra\n6. Remover do carrinho\n7. Sair")
-        op = input("Escolha: ")
+        op = input("\nEscolha uma opção para iniciar: \n")
 
         if op == '1':
             exibir_lista(produtos, "Estoque")
@@ -98,9 +110,9 @@ def menu():
             exibir_lista(carrinho, "Carrinho")
         elif op == '4':
             total, desconto, final = calcular_total(False)
-            print(f"Total: R$ {final}")
+            print("Total: R$ " + str(final))
         elif op == '5':
-            if not carrinho:
+            if len(carrinho) == 0:
                 print("Carrinho vazio.")
                 continue
             cupom = input("Cupom (Digite 'BARBA10' ou Enter): ").strip().upper()

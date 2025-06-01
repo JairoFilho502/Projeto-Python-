@@ -12,3 +12,7 @@ COMPRA:
 - Honda Civic 2024: R$ 200000
 TOTAL: R$ 486000
 
+COMPRA:
+- Toyota Corolla 2021: R$ 130000
+TOTAL: R$ 117000
+
