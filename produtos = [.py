@@ -1,6 +1,6 @@
-DESCONTO_CUPOM = 0.10
-MAX_PRODUTOS = 3
-ARQUIVO_HISTORICO = 'historico_compras.txt'
+DESCONTO = 0.10
+MAX_CARRINHO = 3
+HISTORICO = 'historico_compras.txt'
 
 print("\nBem-vindo ao E-commerce BarbaCar!\n" + "-" * 40)
 
@@ -30,7 +30,7 @@ def exibir_lista(lista, titulo):
     print("-" * 40)
 
 def adicionar_ao_carrinho(produtos, carrinho):
-    if len(carrinho) >= MAX_PRODUTOS:
+    if len(carrinho) >= MAX_CARRINHO:
         print("Carrinho cheio.")
         return carrinho
     exibir_lista(produtos, "Veículos Disponíveis")
@@ -73,12 +73,12 @@ def calcular_total(carrinho, usou_cupom):
     while i < len(carrinho):
         total = total + int(carrinho[i][1])
         i = i + 1
-    desconto = total * DESCONTO_CUPOM if usou_cupom else 0
+    desconto = total * DESCONTO if usou_cupom else 0
     final = total - desconto
     return total, desconto, final
 
 def salvar_compra(carrinho, total):
-    f = open(ARQUIVO_HISTORICO, 'a', encoding='utf-8')
+    f = open(HISTORICO, 'a', encoding='utf-8')
     print("COMPRA:", file=f)
     i = 0
     while i < len(carrinho):
@@ -109,17 +109,17 @@ def menu():
             print("Total: R$ " + str(final))
         elif op == '5':
             if len(carrinho) == 0:
-                print("Carrinho vazio.")
+                print("\nCarrinho vazio.\n" + "-" * 40)
                 continue
             cupom = input("Cupom (Digite 'BARBA10' ou Enter): ").upper()
             total, desconto, final = calcular_total(carrinho, cupom == 'BARBA10')
             salvar_compra(carrinho, final)
-            print("\nCompra finalizada. Obrigado!\n" + "-" * 40)
+            print("\nCompra finalizada. Obrigado por comprar conosco!\n" + "-" * 40)
             carrinho = []
         elif op == '6':
             carrinho = remover_do_carrinho(carrinho)
         elif op == '7':
-            print("Obrigado pela visita! Até mais.")
+            print("\nObrigado pela visita! Até mais.\n" + "-" * 40)
             break
         else:
             print("Opção inválida.")
