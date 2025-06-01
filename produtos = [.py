@@ -1,142 +1,120 @@
-produtos = [
-    ('BYD Dolphin 2024', 165000),
-    ('Hyundai HB20 2023', 85000),
-    ('Jeep Compass 2024', 160000),
-    ('Vw Amarok 2021', 180000),
-    ('Toyota Corolla 2021', 130000),
-    ('Honda Civic 2024', 200000),
-    ('Ford Ranger 2024', 250000),
-    ('Chevrolet S10 2024', 270000),
-    ('BMW 320i 2024', 350000),
-    ('Mercedes-Benz C180 2024', 300000),
-    ('Cavalo Alazão Documentado', 6000)
-]
+DESCONTO_CUPOM = 0.10
+MAX_PRODUTOS = 3
+ARQUIVO_HISTORICO = 'historico_compras.txt'
 
+print("Bem-vindo ao E-commerce BarbaCar!")
+
+produtos = []
 carrinho = []
 
-DESCONTO_CUPOM = 0.10
-MAX_PRODUTOS = 5
+def carregar_produtos():
+    try:
+        with open('lista de produtos.txt', 'r', encoding='utf-8') as f:
+            lista = []
+            for linha in f:
+                pos = linha.find(';')
+                if pos != -1:
+                    nome = linha[:pos].strip()
+                    preco = linha[pos+1:].strip()
+                    lista.append([nome, preco])
+            return lista
+    except FileNotFoundError:
+        print("Arquivo 'lista de produtos.txt' não encontrado.")
+        return []
 
-def exibir_produtos(lista, titulo):
-    print(titulo)
-    print('-' * 40)
-    for i, (modelo, preco) in enumerate(lista):
-        preco_formatado = f'R${preco:,.0f}'.replace(',', '.')
-        print(f'{i} - {modelo} - {preco_formatado}')
+def exibir_lista(lista, titulo):
+    print(f"\n{titulo}\n" + "-" * 40)
     if not lista:
-        print('Nenhum veículo disponível.')
-    print('-' * 40)
+        print("Nenhum item disponível.")
+    for i in range(len(lista)):
+        nome = lista[i][0]
+        preco = int(lista[i][1])
+        print(f"{i} - {nome} - R$ {preco}")
+    print("-" * 40)
 
 def adicionar_ao_carrinho():
     if len(carrinho) >= MAX_PRODUTOS:
-        print(f'Você atingiu o limite de {MAX_PRODUTOS} veículos no carrinho.')
+        print("Carrinho cheio.")
         return
-    exibir_produtos(produtos, 'VEÍCULOS DISPONÍVEIS')
+    exibir_lista(produtos, "Veículos Disponíveis")
     try:
-        escolha = int(input('Digite o número do veículo que você gostaria de adicionar ao carrinho: '))
-        if 0 <= escolha < len(produtos):
-            if any(produtos[escolha][0] == item[0] for item in carrinho):
-                print(f'\n{produtos[escolha][0]} já está no carrinho.')
-                return
-            carrinho.append(produtos[escolha])
-            print(f'\n{produtos[escolha][0]} foi adicionado ao carrinho!')
-        else:
-            print('\nNúmero inválido. Tente novamente.')
-    except ValueError:
-        print('\nEntrada inválida. Digite apenas números.')
+        i = int(input("Escolha o número do veículo: "))
+        carrinho.append(produtos[i])
+        print("Veículo adicionado.")
+    except:
+        print("Escolha inválida.")
 
 def remover_do_carrinho():
-    if not carrinho:
-        print('\nSeu carrinho está vazio.')
-        return
-    exibir_produtos(carrinho, 'VEÍCULOS NO CARRINHO')
+    exibir_lista(carrinho, "Carrinho")
     try:
-        escolha = int(input('Digite o número do veículo que deseja remover: '))
-        if 0 <= escolha < len(carrinho):
-            removido = carrinho.pop(escolha)
-            print(f'\n{removido[0]} foi removido do carrinho.')
+        i = int(input("Número para remover: "))
+        nova_lista = []
+        for j in range(len(carrinho)):
+            if j != i:
+                nova_lista.append(carrinho[j])
+        if len(nova_lista) == len(carrinho):
+            print("Número inválido.")
         else:
-            print('\nNúmero inválido.')
-    except ValueError:
-        print('\nEntrada inválida. Digite apenas números.')
+            print(f"{carrinho[i][0]} removido.")
+            carrinho.clear()
+            carrinho.extend(nova_lista)
+    except:
+        print("Remoção inválida.")
 
-def ver_total(aplicar_cupom=False):
-    subtotal = sum(preco for _, preco in carrinho)
-    desconto = 0
-    
-    if aplicar_cupom:
-        desconto = subtotal * DESCONTO_CUPOM
-        subtotal_com_desconto = subtotal - desconto
-    else:
-        subtotal_com_desconto = subtotal
+def calcular_total(usou_cupom):
+    total = 0
+    for item in carrinho:
+        total += int(item[1])
+    desconto = total * DESCONTO_CUPOM if usou_cupom else 0
+    final = total - desconto
+    return total, desconto, final
 
-    total = subtotal_com_desconto
-
-    print('\n' + '=' * 50)
-    print(f'SUBTOTAL: R${subtotal:,.0f}'.replace(',', '.'))
-    
-    if aplicar_cupom:
-        print(f'DESCONTO ({DESCONTO_CUPOM*100:.0f}%): -R${desconto:,.0f}'.replace(',', '.'))
-        print(f'SUBTOTAL COM DESCONTO: R${subtotal_com_desconto:,.0f}'.replace(',', '.'))
-    
-    print('-' * 50)
-    print(f'TOTAL: R${total:,.0f}'.replace(',', '.'))
-    print('=' * 50)
+def salvar_compra(total):
+    try:
+        with open(ARQUIVO_HISTORICO, 'a', encoding='utf-8') as f:
+            print("COMPRA:", file=f)
+            for item in carrinho:
+                nome = item[0]
+                preco = int(item[1])
+                print("- " + nome + ": R$ " + str(preco), file=f)
+            print("TOTAL: R$ " + str(int(total)), file=f)
+            print("", file=f)
+    except:
+        print("Erro ao salvar compra.")
 
 def menu():
+    global produtos
+    produtos = carregar_produtos()
+
     while True:
-        print('\n' + '=' * 30)
-        print('BarbaCar Revenda Automotiva')
-        print('=' * 30)
-        print('1. Ver estoque')
-        print('2. Adicionar veículo ao carrinho')
-        print('3. Ver carrinho')
-        print('4. Ver total da compra')
-        print('5. Finalizar compra')
-        print('6. Remover veículo do carrinho')
+        print("\n1. Ver estoque\n2. Adicionar ao carrinho\n3. Ver carrinho\n4. Total\n5. Finalizar compra\n6. Remover do carrinho\n7. Sair")
+        op = input("Escolha: ")
 
-        opcao = input('\nEscolha uma opção: ')
-        
-        if opcao == '1':
-            exibir_produtos(produtos, 'Estoque disponível')
-
-        elif opcao == '2':
+        if op == '1':
+            exibir_lista(produtos, "Estoque")
+        elif op == '2':
             adicionar_ao_carrinho()
-
-        elif opcao == '3':
-            if carrinho:
-                exibir_produtos(carrinho, 'Veículos no Carrinho')
-            else:
-                print('\nSeu carrinho está vazio.')
-
-        elif opcao == '4':
-            if carrinho:
-                ver_total()
-            else:
-                print('\nSeu carrinho está vazio.')
-
-        elif opcao == '5':
+        elif op == '3':
+            exibir_lista(carrinho, "Carrinho")
+        elif op == '4':
+            total, desconto, final = calcular_total(False)
+            print(f"Total: R$ {final}")
+        elif op == '5':
             if not carrinho:
-                print('\nSeu carrinho está vazio. Adicione veículos antes de finalizar.')
+                print("Carrinho vazio.")
                 continue
-                
-            usar_cupom = input('\nPossui cupom de desconto? Digite "DESCONTO10" para 10% (ou Enter para ignorar): ')
-
-            aplicar_cupom = usar_cupom.strip().upper() == 'DESCONTO10'
-            
-            print('\n' + '=' * 50)
-            print('Resumo da Compra')
-            ver_total(aplicar_cupom)
-            print('\nCompra finalizada com sucesso!')
-            print('Obrigado por escolher nossa loja!')
-            print('=' * 50)
-            break
-            
-        elif opcao == '6':
+            cupom = input("Cupom (Digite 'BARBA10' ou Enter): ").strip().upper()
+            _, _, final = calcular_total(cupom == "BARBA10")
+            salvar_compra(final)
+            print("Compra finalizada. Obrigado!")
+            carrinho.clear()
+        elif op == '6':
             remover_do_carrinho()
-
+        elif op == '7':
+            print("Obrigado pela visita! Até mais.")
+            break
         else:
-            print('\nOpção inválida. Tente novamente.')
+            print("Opção inválida.")
 
 if __name__ == '__main__':
     menu()

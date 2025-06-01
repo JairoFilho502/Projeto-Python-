@@ -1,0 +1,14 @@
+COMPRA:
+- Cavalo Alazão Documentado: R$6.000
+TOTAL: R$5.400
+
+COMPRA:
+- Cavalo Alazão Documentado: R$ 6000
+TOTAL: R$ 6000
+
+COMPRA:
+- Vw Amarok 2021: R$ 180000
+- Jeep Compass 2024: R$ 160000
+- Honda Civic 2024: R$ 200000
+TOTAL: R$ 486000
+
