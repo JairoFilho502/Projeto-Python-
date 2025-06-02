@@ -111,10 +111,16 @@ def menu(): #exemplo de funções com parâmetros e retorno
             if len(carrinho) == 0:
                 print("\nCarrinho vazio.\n" + "-" * 40)
                 continue
-            cupom = input("Cupom (Digite 'BARBA10' ou Enter): ").upper()
+            cupom = input("Cupom (Digite 'BARBA10' ou Enter): ")
             total, desconto, final = calcular_total(carrinho, cupom == 'BARBA10')
             salvar_compra(carrinho, final)
+            salvar_compra(carrinho, final)
+            print("\nResumo da compra:\n")
+            print("Total sem desconto: R$ " + str(total))
+            print("Desconto aplicado: R$ " + str(int(desconto)))
+            print("Total final com desconto: R$ " + str(int(final)))
             print("\nCompra finalizada. Obrigado por comprar conosco!\n" + "-" * 40)
+
             carrinho = []
         elif op == '6':
             carrinho = remover_do_carrinho(carrinho)

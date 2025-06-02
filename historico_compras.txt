@@ -52,3 +52,31 @@ COMPRA:
 - Cavalo Alazão Documentado: R$ 6000
 TOTAL: R$ 5400
 
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Hyundai HB20 2023: R$ 85000
+TOTAL: R$ 85000
+
+COMPRA:
+- Hyundai HB20 2023: R$ 85000
+TOTAL: R$ 85000
+

@@ -11,6 +11,6 @@ Mercedes-Benz C180 2024;300000
 Cavalo Alazão Documentado;6000
 Yamaha MT-03 2024;31390
 Honda CB 650r 2024;52590
-
+Kawasaki Ninja ZX-10R 2025;120490
 
 '''arquivo .txt dos produtos disponíveis'''
