@@ -88,3 +88,14 @@ COMPRA:
 - Toyota Corolla 2021: R$ 130000
 TOTAL: R$ 130000
 
+
+COMPRA - 02/06/2025 20:15:57
+- Vw Amarok 2021: R$ 180000
+- Honda Civic 2024: R$ 200000
+- Chevrolet S10 2024: R$ 270000
+TOTAL: R$ 585000
+
+COMPRA - 02/06/2025 20:32:08
+- Cavalo Alazão Documentado: R$ 6000
+- Toyota Corolla 2021: R$ 130000
+TOTAL: R$ 122400
