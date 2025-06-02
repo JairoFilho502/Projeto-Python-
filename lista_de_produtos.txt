@@ -1,0 +1,17 @@
+BYD Dolphin 2024;165000;1
+Hyundai HB20 2023;85000;4
+Jeep Compass 2024;160000;3
+Vw Amarok 2021;180000;2
+Toyota Corolla 2021;130000;2
+Honda Civic 2024;200000;1
+Ford Ranger 2024;250000;1
+Chevrolet S10 2024;270000;1
+BMW 320i 2024;350000;2
+Mercedes-Benz C180 2024;300000;1
+Cavalo Alazão Documentado;6000;1
+Yamaha MT-03 2024;31390;2
+Honda CB 650r 2024;52590;1
+Kawasaki Ninja ZX-10R 2025;120490;2
+Porsche 911 Carrera 2024;950000;1
+
+#estoque de veículos

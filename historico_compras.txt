@@ -1,0 +1,101 @@
+COMPRA:
+- Cavalo Alazão Documentado: R$6.000
+TOTAL: R$5.400
+
+COMPRA:
+- Cavalo Alazão Documentado: R$ 6000
+TOTAL: R$ 6000
+
+COMPRA:
+- Vw Amarok 2021: R$ 180000
+- Jeep Compass 2024: R$ 160000
+- Honda Civic 2024: R$ 200000
+TOTAL: R$ 486000
+
+COMPRA:
+- Toyota Corolla 2021: R$ 130000
+TOTAL: R$ 117000
+
+COMPRA:
+- Toyota Corolla 2021: R$ 130000
+TOTAL: R$ 117000
+
+COMPRA:
+- Hyundai HB20 2023: R$ 85000
+TOTAL: R$ 85000
+
+COMPRA:
+- Vw Amarok 2021: R$ 180000
+TOTAL: R$ 180000
+
+COMPRA:
+- Vw Amarok 2021: R$ 180000
+TOTAL: R$ 180000
+
+COMPRA:
+- Hyundai HB20 2023: R$ 85000
+TOTAL: R$ 85000
+
+COMPRA:
+- Chevrolet S10 2024: R$ 270000
+TOTAL: R$ 270000
+
+COMPRA:
+- Hyundai HB20 2023: R$ 85000
+TOTAL: R$ 85000
+
+COMPRA:
+- Hyundai HB20 2023: R$ 85000
+TOTAL: R$ 76500
+
+COMPRA:
+- Cavalo Alazão Documentado: R$ 6000
+TOTAL: R$ 5400
+
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Kawasaki Ninja ZX-10R 2025: R$ 120490
+TOTAL: R$ 108441
+
+COMPRA:
+- Hyundai HB20 2023: R$ 85000
+TOTAL: R$ 85000
+
+COMPRA:
+- Hyundai HB20 2023: R$ 85000
+TOTAL: R$ 85000
+
+COMPRA:
+- Toyota Corolla 2021: R$ 130000
+TOTAL: R$ 130000
+
+COMPRA:
+- Toyota Corolla 2021: R$ 130000
+TOTAL: R$ 130000
+
+
+COMPRA - 02/06/2025 20:15:57
+- Vw Amarok 2021: R$ 180000
+- Honda Civic 2024: R$ 200000
+- Chevrolet S10 2024: R$ 270000
+TOTAL: R$ 585000
+
+COMPRA - 02/06/2025 20:32:08
+- Cavalo Alazão Documentado: R$ 6000
+- Toyota Corolla 2021: R$ 130000
+TOTAL: R$ 122400
