@@ -2,7 +2,7 @@ DESCONTO = 0.10
 MAX_CARRINHO = 3
 HISTORICO = 'historico_compras.txt'
 
-print("\nBem-vindo ao E-commerce BarbaCar!\n" + "-" * 40)  #exemplo de entrada e saida de dados 
+print("\nBem-vindo ao E-commerce BarbaCar!\n" + "-" * 40)  #exemplo de entrada e saida de dados e estilização com o "-" * 40
 
 produtos = []  #exemplo de tipos de dados e variáveis
 carrinho = []  #exemplo de tipos de dados e variáveis
