@@ -60,7 +60,7 @@ def remover_do_carrinho(carrinho):
                     nova = nova + [carrinho[posicao]]
                 posicao += 1
             carrinho = nova
-            print(nome + "foi removido.")
+            print(nome + " foi removido.")
         else:
             print("Número inválido.")
     else:
