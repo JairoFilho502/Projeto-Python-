@@ -80,3 +80,11 @@ COMPRA:
 - Hyundai HB20 2023: R$ 85000
 TOTAL: R$ 85000
 
+COMPRA:
+- Toyota Corolla 2021: R$ 130000
+TOTAL: R$ 130000
+
+COMPRA:
+- Toyota Corolla 2021: R$ 130000
+TOTAL: R$ 130000
+

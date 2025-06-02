@@ -54,13 +54,13 @@ def remover_do_carrinho(carrinho):
         if 0 <= i < len(carrinho):
             nome = carrinho[i][0]
             nova = []
-            j = 0
-            while j < len(carrinho):
-                if j != i:
-                    nova = nova + [carrinho[j]]
-                j += 1
+            posicao = 0  #é o contador 
+            while posicao < len(carrinho):
+                if posicao != i:
+                    nova = nova + [carrinho[posicao]]
+                posicao += 1
             carrinho = nova
-            print(nome + " removido.")
+            print(nome + "foi removido.")
         else:
             print("Número inválido.")
     else:
