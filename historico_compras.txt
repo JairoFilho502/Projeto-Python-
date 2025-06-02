@@ -48,3 +48,7 @@ COMPRA:
 - Hyundai HB20 2023: R$ 85000
 TOTAL: R$ 76500
 
+COMPRA:
+- Cavalo Alazão Documentado: R$ 6000
+TOTAL: R$ 5400
+

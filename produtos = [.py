@@ -2,19 +2,19 @@ DESCONTO = 0.10
 MAX_CARRINHO = 3
 HISTORICO = 'historico_compras.txt'
 
-print("\nBem-vindo ao E-commerce BarbaCar!\n" + "-" * 40)
+print("\nBem-vindo ao E-commerce BarbaCar!\n" + "-" * 40)  #exemplo de entrada e saida de dados 
 
 produtos = []
-carrinho = []
+carrinho = []  #exemplo de tipos de dados e variáveis
 
-def carregar_produtos():
+def carregar_produtos():   #exemplo de funções com parâmetros e retorno
     lista = []
-    for linha in open('lista de produtos.txt', 'r', encoding='utf-8'):
+    for linha in open('lista de produtos.txt', 'r', encoding='utf-8'):  #exemplo de arquivos
         pos = linha.find(';')
-        if pos != -1:
+        if pos != -1:  #exemplo de estruturas de decisão (if, elif, else)
             nome = linha[:pos].strip()
             preco = linha[pos+1:].strip()
-            lista = lista + [[nome, preco]]
+            lista = lista + [[nome, preco]]  #exemplo de listas e tuplas
     return lista
 
 def exibir_lista(lista, titulo):
@@ -22,7 +22,7 @@ def exibir_lista(lista, titulo):
     if len(lista) == 0:
         print("Nenhum item disponível.")
     i = 0
-    while i < len(lista):
+    while i < len(lista):  #exemplo de estruturas de repetição (for, while)
         nome = lista[i][0]
         preco = int(lista[i][1])
         print(str(i) + " - " + nome + " - R$ " + str(preco))
@@ -90,11 +90,11 @@ def salvar_compra(carrinho, total):
     print("", file=f)
     f.close()
 
-def menu():
+def menu(): #exemplo de funções com parâmetros e retorno
     global produtos, carrinho
     produtos = carregar_produtos()
 
-    while True:
+    while True:  #exemplo de estruturas de repetição (for, while)
         print("\n1. Ver estoque\n2. Adicionar ao carrinho\n3. Ver carrinho\n4. Total da compra\n5. Finalizar compra\n6. Remover do carrinho\n7. Sair")
         op = input("\nEscolha uma opção para iniciar: \n")
 
