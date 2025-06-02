@@ -31,7 +31,7 @@ def exibir_lista(lista, titulo):
 
 def adicionar_ao_carrinho(produtos, carrinho):
     if len(carrinho) >= MAX_CARRINHO:
-        print("\nlimite máximo para o carrinho atingido(3 max), para continuar remova algum item.\n")
+        print("\nlimite máximo para o carrinho atingido(3 max), para continuar remova algum item.\n" + "-" * 85)
         return carrinho
     exibir_lista(produtos, "Veículos Disponíveis")
     escolha = input("Escolha o número do veículo: ")
