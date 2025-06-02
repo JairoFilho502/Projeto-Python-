@@ -9,6 +9,8 @@ Chevrolet S10 2024;270000
 BMW 320i 2024;350000
 Mercedes-Benz C180 2024;300000
 Cavalo Alazão Documentado;6000
+Yamaha MT-03 2024;31390
+Honda CB 650r 2024;52590
 
 
 '''arquivo .txt dos produtos disponíveis'''
