@@ -4,14 +4,14 @@ HISTORICO = 'historico_compras.txt'
 
 print("\nBem-vindo ao E-commerce BarbaCar!\n" + "-" * 40)  #exemplo de entrada e saida de dados 
 
-produtos = []
+produtos = []  #exemplo de tipos de dados e variáveis
 carrinho = []  #exemplo de tipos de dados e variáveis
 
 def carregar_produtos():   #exemplo de funções com parâmetros e retorno
     lista = []
     for linha in open('lista de produtos.txt', 'r', encoding='utf-8'):  #exemplo de arquivos
         pos = linha.find(';')
-        if pos != -1:  #exemplo de estruturas de decisão (if, elif, else)
+        if pos != -1:         #exemplo de estruturas de decisão (if, elif, else)
             nome = linha[:pos].strip()
             preco = linha[pos+1:].strip()
             lista = lista + [[nome, preco]]  #exemplo de listas e tuplas
