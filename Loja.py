@@ -1,13 +1,13 @@
 import os
 from datetime import datetime
-from menus import menuAdm, menuCliente, menuPerfil, menuAdmEdit, menuAdmRelatorio
+from menus import menuAdm, menuCliente, menuPerfil, menuAdmEdit, menuAdmRelatorio, tituloFormatado
 
 DESCONTO = 0.10
 MAX_CARRINHO = 3
 HISTORICO = 'historico_compras.txt'
 ARQUIVO_PRODUTOS = 'lista_de_produtos.txt'
 
-print("\nBem-vindo ao E-commerce BarbaCar!\n" + "-" * 40)
+tituloFormatado("Bem vindo ao BarbaCar!!!")
 
 produtos = []
 carrinho = []
@@ -217,6 +217,7 @@ def carregar_produtos():
 #--------------------------- Menu do perfil
 
 def menu():
+    tituloFormatado("MENU")
     while True:
         menuPerfil()
         op = input("\nEscolha o perfil a acessar: \n").strip()
@@ -238,6 +239,7 @@ def menu():
 
                                   #menu do Cliente
 def menu_cliente():
+    tituloFormatado("MENU CLIENTE")
     global produtos, carrinho
     produtos = carregar_produtos()
     carrinho = []
@@ -270,7 +272,8 @@ def menu_cliente():
 
 
 #--------------------------------------menu do ADM
-def menu_admin():                  
+def menu_admin():         
+    tituloFormatado("MENU ADMIN")         
     global produtos
     produtos = carregar_produtos()
 
@@ -283,10 +286,12 @@ def menu_admin():
         op = int(op)
 
         if op == 1:
-            exibir_lista(produtos, "Estoque Atual")
+            a = tituloFormatado("Estoque atual")
+            exibir_lista(produtos, a)
 
         elif op == 2:
             while True:
+                tituloFormatado("MENU ADMIN => EDITAR PRODUTOS")
                 menuAdmEdit()
                 op_edit = input("\nEscolha: ").strip()
                 if not op_edit.isdigit():
@@ -352,6 +357,7 @@ def menu_admin():
 
         elif op == 3:
             while True:
+                tituloFormatado("MENU ADMIN => RELATÓRIO")
                 menuAdmRelatorio()
                 op_rel = input("\nEscolha: ").strip()
                 if not op_rel.isdigit():
@@ -383,36 +389,3 @@ if __name__ == '__main__':
     menu()
 
 
-
-
-
-        #     nome = input("Nome do produto: ")
-        #     preco = input("Preço: ")
-        #     estoque = input("Quantidade: ")
-        #     produtos.append([nome, preco, estoque])
-        #     salvar_produtos(produtos)
-        #     print("\nProduto cadastrado com sucesso.\n" + "-" * 40)  
-        # elif op == 3:
-        #     exibir_lista(produtos, "Produtos")
-        #     i = input("Número do produto para editar: ")
-        #     if i.isdigit():
-        #         i = int(i)
-        #         if 0 <= i < len(produtos):
-        #             nome = input("Novo nome: ")
-        #             preco = input("Novo preço: ")
-        #             estoque = input("Nova quantidade: ")
-        #             produtos[i] = [nome, preco, estoque]
-        #             salvar_produtos(produtos)
-        #             print("Produto editado com sucesso.")  
-        #         else:
-        #             print("Produto não encontrado.")
-        # elif op == 4:
-        #     if os.path.exists(HISTORICO):
-        #         with open(HISTORICO, 'r', encoding='utf-8') as f:
-        #             print("\nRELATÓRIO DE VENDAS:\n" + f.read())  
-        #     else:
-        #         print("Nenhuma venda registrada.")
-        # elif op == 5:   
-        #     break
-        # else:
-        #     print("Opção inválida.")

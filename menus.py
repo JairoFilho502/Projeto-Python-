@@ -1,11 +1,17 @@
+def tituloFormatado(titulo, sep="="):
+    linha = sep * (len(titulo) + 10)
+    return f"\n{linha}\n{sep*4} {titulo} {sep*4}\n{linha}"
+
+
 def menuPerfil():
+    tituloFormatado("MENU USER")
     print("\n1. Cliente" 
         "\n2. Administrador" 
         "\n3. Sair")
 
 
 def menuCliente():
-    print("\nMENU CLIENTE\n" + "-" * 40)
+    tituloFormatado("MENU => cliente")
     print("1. Ver produtos"
         "\n2. Adicionar ao carrinho"
         "\n3. Ver carrinho"
@@ -16,7 +22,7 @@ def menuCliente():
 
 
 def menuAdm():
-    print("\nMENU ADMINISTRADOR")
+    tituloFormatado("MENU => ADMIN")
     print("1. Ver produtos"
         "\n2. Editar produto"
         "\n3. Relatório de vendas"
@@ -24,7 +30,7 @@ def menuAdm():
 
 
 def menuAdmEdit():
-    print("\nMENU ADMINISTRADOR => EDITAR PRODUTOS")
+    tituloFormatado("MENU => ADMIN => EDIT")
     print("1. Ver produtos"
           "\n2. Adicionar produto"
           "\n3. Alterar nome do produto"
@@ -34,20 +40,7 @@ def menuAdmEdit():
           "\n7. Voltar")
 
 def menuAdmRelatorio():
-    print("\nMENU ADMINISTRADOR => RELATÓRIO"
-        "\n1. Relatório semanal"
+    tituloFormatado("MENU => ADMIN => RELATORIO")
+    print("\n1. Relatório semanal"
         "\n2. Relatório mensal"
         "\n3. Voltar")
-
-# ADM
-# relatorio de vendas
-# - semanal 
-# - mensal
-
-# excluir veiculos
-
-# Cliente
-# modo de pagamento
-# - cartao
-# - dinheiro
-# - cupom
