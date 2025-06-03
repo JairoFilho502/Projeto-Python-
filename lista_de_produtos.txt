@@ -2,7 +2,7 @@ BYD Dolphin 2024;165000;2
 Hyundai HB20 2023;85000;2
 Jeep Compass 2024;160000;0
 Vw Amarok 2021;180000;0
-Toyota Corolla 2021;130000;0
+Toyota Corolla 2021;130000;1
 Honda Civic 2024;200000;1
 Ford Ranger 2024;250000;0
 Chevrolet S10 2024;270000;0
@@ -15,3 +15,4 @@ Kawasaki Ninja ZX-10R 2025;120490;1
 Porsche 911 Carrera 2024;950000;1
 Toyota Corolla 2025;150000;4
 Ranger 4x4 2020;200000;1
+ 
