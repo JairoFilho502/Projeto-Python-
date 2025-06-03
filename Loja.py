@@ -102,7 +102,7 @@ def menu_cliente():
     carrinho = []
 
     while True:
-        print("\nMENU CLIENTE")
+        print("\nMENU CLIENTE\n" + "-" * 40)
         print("1. Ver produtos\n2. Adicionar ao carrinho\n3. Ver carrinho\n4. Total\n5. Finalizar compra\n6. Remover do carrinho\n7. Voltar")
         op = input("\nEscolha: \n")
 
@@ -119,19 +119,26 @@ def menu_cliente():
             if not carrinho:
                 print("Carrinho vazio.")
                 continue
-            cupom = input("Cupom (BARBA10 ou Enter): ").upper()
-            total, desc, final = calcular_total(carrinho, cupom == 'BARBA10')
+
+            print("\nPossui cupom de desconto?")
+            print("1 - Sim")
+            print("2 - Não")
+            resposta = input("Escolha: ").strip()
+
+            usou_cupom = False
+            if resposta == '1':
+                cupom = input("\nDigite o cupom: \n").strip().upper()
+                usou_cupom = cupom == 'BARBA10'
+            elif resposta != '2':
+                print("Opção inválida. Seguindo sem cupom.")
+
+            total, desc, final = calcular_total(carrinho, usou_cupom)
             salvar_compra(carrinho, final)
             salvar_produtos(produtos)
-            print(f"Total: R$ {total}\nDesconto: R$ {int(desc)}\nFinal: R$ {int(final)}")
-            print("\nCompra finalizada. Obrigado!\n" )
+            print(f"\nTotal: R$ {total}\nDesconto: R$ {int(desc)}\nFinal: R$ {int(final)}")
+            print("\nCompra finalizada. Obrigado!\n")
             carrinho.clear()
-        elif op == '6':
-            carrinho = remover_do_carrinho(carrinho)
-        elif op == '7':
-            break
-        else:
-            print("Opção inválida.")
+
 
 def menu_admin():                  #menu do ADM
     global produtos
