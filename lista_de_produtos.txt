@@ -5,7 +5,7 @@ Vw Amarok 2021;180000;0
 Toyota Corolla 2021;130000;0
 Honda Civic 2024;200000;1
 Ford Ranger 2024;250000;0
-Chevrolet S10 2024;270000;1
+Chevrolet S10 2024;270000;0
 BMW 320i 2024;350000;1
 Mercedes-Benz c180 2024;300000;1
 Cavalo Alazão Documentado;6000;1

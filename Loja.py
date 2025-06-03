@@ -36,10 +36,10 @@ def adicionar_ao_carrinho(produtos, carrinho):
         if 0 <= i < len(produtos):
             if int(produtos[i][2]) > 0:
                 carrinho.append(produtos[i])
-                produtos[i][2] = str(int(produtos[i][2]) - 1)
+                produtos[i][2] = str(int(produtos[i][2]) - 1) 
                 print(f"\n {carrinho[-1][0]} foi adicionado ao carrinho.\n" + "-" * 50)
             else:
-                print("Estoque esgotado.")
+                print("\nEstoque esgotado.\n")
         else:
             print("Número inválido.")
     else:
@@ -56,7 +56,6 @@ def remover_do_carrinho(carrinho):
     if not carrinho:
         print("O carrinho está vazio")
         return carrinho
-
     exibir_lista(carrinho, "Carrinho")
     escolha = input("Número para remover: ")
     if escolha.isdigit():
@@ -175,7 +174,7 @@ def carregar_produtos():
             partes = linha.strip().split(';')
             if len(partes) == 2:
                 nome, preco = partes
-                estoque = '1'
+                estoque = '1'     
                 lista.append([nome, preco, estoque])
             elif len(partes) == 3:
                 nome, preco, estoque = partes
