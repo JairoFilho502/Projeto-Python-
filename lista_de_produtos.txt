@@ -1,0 +1,16 @@
+BYD Dolphin 2024;165000;3
+Hyundai HB20 2023;85000;3
+Jeep Compass 2024;160000;0
+Vw Amarok 2021;180000;1
+Toyota Corolla 2021;130000;0
+Honda Civic 2024;200000;0
+Ford Ranger 2024;250000;0
+Chevrolet S10 2024;270000;0
+BMW 320i 2024;350000;1
+Mercedes-Benz c180 2024;300000;1
+Cavalo Alazão Documentado;6000;1
+Yamaha MT-03 2024;31390;2
+Honda CB 650r 2024;52590;1
+Kawasaki Ninja ZX-10R 2025;120490;1
+Porsche 911 Carrera 2024;950000;1
+Toyota Corolla 2025;150000;4
