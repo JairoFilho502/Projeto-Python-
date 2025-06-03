@@ -25,7 +25,6 @@ def exibir_lista(lista, titulo):
                 print(f"{i} - {nome} - R$ {preco} - Estoque: {estoque}")
     print("-" * 40)
 
-
 def adicionar_ao_carrinho(produtos, carrinho):
     if len(carrinho) >= MAX_CARRINHO:
         print("\nCarrinho cheio (max. 3 itens). Remova algo para continuar.\n" + "-" * 50)
@@ -47,25 +46,27 @@ def adicionar_ao_carrinho(produtos, carrinho):
         print("Escolha inválida.")
     return carrinho
 
-
 def calcular_total(carrinho, usou_cupom):
     total = sum(int(item[1]) for item in carrinho)
     desconto = total * DESCONTO if usou_cupom else 0
     final = total - desconto
     return total, desconto, final
 
-
 def remover_do_carrinho(carrinho):
     if not carrinho:
         print("O carrinho está vazio")
         return carrinho
-    
+
     exibir_lista(carrinho, "Carrinho")
     escolha = input("Número para remover: ")
     if escolha.isdigit():
         i = int(escolha)
         if 0 <= i < len(carrinho):
-            nome = carrinho[i][0]
+            nome, preco, _ = carrinho[i]
+            for produto in produtos:
+                if produto[0] == nome and produto[1] == preco:
+                    produto[2] = str(int(produto[2]) + 1)
+                    break
             carrinho.pop(i)
             print(f"\n{nome} foi removido.\n")
         else:
@@ -74,43 +75,12 @@ def remover_do_carrinho(carrinho):
         print("Opção inválida.")
     return carrinho
 
-
 def salvar_compra(carrinho, total):
     with open(HISTORICO, 'a', encoding='utf-8') as f:
         f.write(f"\nCOMPRA - {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n")
         for item in carrinho:
             f.write(f"- {item[0]}: R$ {item[1]}\n")
         f.write(f"\nTOTAL: R$ {int(total)}\n" + "-" * 50)
-
-
-def finalizar_compra(carrinho, produtos):
-    if not carrinho:
-        print("Carrinho vazio.")
-        return
-
-    print("\nPossui cupom de desconto?\n")
-    print("1 - Sim")
-    print("2 - Não")
-    resposta = input("Escolha: ").strip()
-
-    usou_cupom = False
-    if resposta == '1':
-        cupom = input("\nDigite o cupom: \n").strip().upper()
-        usou_cupom = cupom == 'BARBA10'
-    elif resposta != '2':
-        print("Opção inválida. Seguindo sem cupom.")
-
-    total, desc, final = calcular_total(carrinho, usou_cupom)
-    salvar_compra(carrinho, final)
-    salvar_produtos(produtos)
-    exibir_lista(carrinho, "NOTA FISCAL")
-    print(f"\n {'Total:' :<10} \t R$ \t{total:8.2f}")
-    print(f" {'Desconto:' :<10} \t R$ \t{desc:8.2f}")
-    print(f" {'Final:' :<10} \t R$ \t{final:8.2f}")
-    print('\n', datetime.now())
-    print("\nCompra finalizada. Obrigado!\n")
-    carrinho.clear()
-
 
 def calcular_parcelas(valor, parcelas, taxa_juros):
     i = taxa_juros / 100
@@ -193,23 +163,21 @@ def finalizar_compra(carrinho, produtos):
     print("\nCompra finalizada. Obrigado!\n")
     carrinho.clear()
 
-
 def salvar_produtos(produtos):
     with open(ARQUIVO_PRODUTOS, 'w', encoding='utf-8') as f:
         for nome, preco, estoque in produtos:
             f.write(f"{nome};{preco};{estoque}\n")
-        
 
 def carregar_produtos():
     lista = []
     if os.path.exists(ARQUIVO_PRODUTOS):
         for linha in open(ARQUIVO_PRODUTOS, 'r', encoding='utf-8'):
             partes = linha.strip().split(';')
-            if len(partes) == 2:  
+            if len(partes) == 2:
                 nome, preco = partes
-                estoque = '1'  
+                estoque = '1'
                 lista.append([nome, preco, estoque])
-            elif len(partes) == 3:  
+            elif len(partes) == 3:
                 nome, preco, estoque = partes
                 lista.append([nome, preco, estoque])
     return lista
@@ -237,7 +205,8 @@ def menu():
             print("Opção inválida.")
 
 
-                                  #menu do Cliente
+#-------------------------menu do Cliente
+
 def menu_cliente():
     tituloFormatado("MENU CLIENTE")
     global produtos, carrinho
