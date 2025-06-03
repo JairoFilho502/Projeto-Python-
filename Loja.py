@@ -7,7 +7,7 @@ MAX_CARRINHO = 3
 HISTORICO = 'historico_compras.txt'
 ARQUIVO_PRODUTOS = 'lista_de_produtos.txt'
 
-tituloFormatado("Bem vindo ao BarbaCar!!!")
+print("\nBem vindo ao BarbaCar! A sua revenda em Sapé-PB\n")
 
 produtos = []
 carrinho = []
@@ -28,7 +28,7 @@ def exibir_lista(lista, titulo):
 
 def adicionar_ao_carrinho(produtos, carrinho):
     if len(carrinho) >= MAX_CARRINHO:
-        print("\nCarrinho cheio (max. 3 itens). Remova algo antes.\n" + "-" * 50)
+        print("\nCarrinho cheio (max. 3 itens). Remova algo para continuar.\n" + "-" * 50)
         return carrinho
     exibir_lista(produtos, "Veículos Disponíveis")
     escolha = input("Escolha o número do veículo correspondente: ")
@@ -38,7 +38,7 @@ def adicionar_ao_carrinho(produtos, carrinho):
             if int(produtos[i][2]) > 0:
                 carrinho.append(produtos[i])
                 produtos[i][2] = str(int(produtos[i][2]) - 1)
-                print(f"\n {carrinho[-1][0]} foi adicionado ao carrinho.\n" + "-" * 40)
+                print(f"\n {carrinho[-1][0]} foi adicionado ao carrinho.\n" + "-" * 50)
             else:
                 print("Estoque esgotado.")
         else:
@@ -80,7 +80,7 @@ def salvar_compra(carrinho, total):
         f.write(f"\nCOMPRA - {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n")
         for item in carrinho:
             f.write(f"- {item[0]}: R$ {item[1]}\n")
-        f.write(f"TOTAL: R$ {int(total)}\n")
+        f.write(f"\nTOTAL: R$ {int(total)}\n" + "-" * 50)
 
 
 def finalizar_compra(carrinho, produtos):
@@ -88,7 +88,7 @@ def finalizar_compra(carrinho, produtos):
         print("Carrinho vazio.")
         return
 
-    print("\nPossui cupom de desconto?")
+    print("\nPossui cupom de desconto?\n")
     print("1 - Sim")
     print("2 - Não")
     resposta = input("Escolha: ").strip()
@@ -262,7 +262,7 @@ def menu_cliente():
             remover_do_carrinho(carrinho)
         elif op == 5:
             _, _, final = calcular_total(carrinho, False)
-            print(f"Total: R$ {final}")
+            print(f"\nTotal: R$ {final}\n" + "-" * 40)
         elif op == 6:
             finalizar_compra(carrinho, produtos)
         elif op == 7:
@@ -310,7 +310,7 @@ def menu_admin():
                     salvar_produtos(produtos)
                     print(f"{nome} adicionado com sucesso.")
 
-                elif op_edit in [3, 4, 5]:  # Editar nome, preço ou estoque
+                elif op_edit in [3, 4, 5]:  # Edita nome, preço ou quantidade no estoque
                     if not produtos:
                         print("Nenhum produto cadastrado.")
                         continue
@@ -330,7 +330,7 @@ def menu_admin():
                         elif op_edit == 5:
                             novo_estoque = input("Novo estoque: ").strip()
                             produtos[i][2] = novo_estoque if novo_estoque else produtos[i][2]
-                            print("Estoque atualizado com sucesso.")
+                            print("\nEstoque atualizado com sucesso.\n")
                         salvar_produtos(produtos)
                     else:
                         print("Índice inválido.")
